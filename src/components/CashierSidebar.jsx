@@ -1,121 +1,178 @@
-import {
-  FaCashRegister,
-  FaUsers,
-  FaReceipt,
-  FaSignOutAlt,
-  FaStore,
-  FaUser,
-} from "react-icons/fa";
+import React from "react";
 
-function CashierSidebar({ onLogout }) {
-  const menu = [
-    {
-      name: "Point of Sale",
-      icon: <FaCashRegister />,
-    },
-    {
-      name: "Orders",
-      icon: <FaReceipt />,
-    },
-    {
-      name: "Customers",
-      icon: <FaUsers />,
-    },
-  ];
+import {
+  LayoutDashboard,
+  ShoppingCart,
+  Package,
+  Receipt,
+  LogOut,
+} from "lucide-react";
+
+const CashierSidebar = ({ onLogout }) => {
 
   return (
-    <aside className="w-64 min-h-screen bg-slate-900 text-white flex flex-col">
+    <aside
+      className="
+        flex
+        h-screen
+        w-64
+        flex-col
+        border-r
+        border-slate-200
+        bg-white/80
+        backdrop-blur-xl
+        dark:border-slate-700
+        dark:bg-slate-900/80
+      "
+    >
 
-      {/* Logo */}
-      <div className="p-6 border-b border-slate-700">
-        <div className="flex items-center gap-3">
+      {/* LOGO */}
 
-          <div className="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center">
-            <FaStore />
-          </div>
+      <div
+        className="
+          border-b
+          border-slate-200
+          p-6
+          dark:border-slate-700
+        "
+      >
 
-          <div>
-            <h1 className="font-bold text-lg">
-              FreshPOS
-            </h1>
+        <h1 className="text-2xl font-bold text-emerald-500">
+          RPR POS
+        </h1>
 
-            <p className="text-xs text-slate-400">
-              Cashier Panel
-            </p>
-          </div>
-
-        </div>
-      </div>
-
-      {/* Navigation */}
-      <nav className="flex-1 p-4">
-
-        <p className="text-xs text-slate-500 uppercase font-semibold px-3 mb-3">
-          Sales
+        <p className="mt-1 text-sm text-slate-500">
+          Cashier Panel
         </p>
 
-        <div className="space-y-2">
+      </div>
 
-          {menu.map((item, index) => (
-            <button
-              key={index}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition ${
-                index === 0
-                  ? "bg-emerald-500 text-white"
-                  : "text-slate-400 hover:bg-slate-800 hover:text-white"
-              }`}
-            >
-              <span className="text-lg">
-                {item.icon}
-              </span>
 
-              <span className="font-medium">
-                {item.name}
-              </span>
-            </button>
-          ))}
+      {/* MENU */}
 
-        </div>
+      <nav className="flex-1 space-y-2 p-4">
+
+        <button
+          className="
+            flex
+            w-full
+            items-center
+            gap-3
+            rounded-xl
+            bg-emerald-500
+            px-4
+            py-3
+            text-white
+          "
+        >
+          <LayoutDashboard size={20} />
+          Dashboard
+        </button>
+
+
+        <button
+          className="
+            flex
+            w-full
+            items-center
+            gap-3
+            rounded-xl
+            px-4
+            py-3
+            text-slate-600
+            transition
+            hover:bg-emerald-50
+            dark:text-slate-300
+            dark:hover:bg-slate-800
+          "
+        >
+          <ShoppingCart size={20} />
+          POS
+        </button>
+
+
+        <button
+          className="
+            flex
+            w-full
+            items-center
+            gap-3
+            rounded-xl
+            px-4
+            py-3
+            text-slate-600
+            transition
+            hover:bg-emerald-50
+            dark:text-slate-300
+            dark:hover:bg-slate-800
+          "
+        >
+          <Package size={20} />
+          Products
+        </button>
+
+
+        <button
+          className="
+            flex
+            w-full
+            items-center
+            gap-3
+            rounded-xl
+            px-4
+            py-3
+            text-slate-600
+            transition
+            hover:bg-emerald-50
+            dark:text-slate-300
+            dark:hover:bg-slate-800
+          "
+        >
+          <Receipt size={20} />
+          Sales
+        </button>
 
       </nav>
 
-      {/* Cashier Profile */}
-      <div className="p-4 border-t border-slate-700">
 
-        <div className="flex items-center gap-3 mb-4">
+      {/* LOGOUT */}
 
-          <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center">
-            <FaUser />
-          </div>
+      <div
+        className="
+          border-t
+          border-slate-200
+          p-4
+          dark:border-slate-700
+        "
+      >
 
-          <div>
-            <p className="font-semibold">
-              Cashier
-            </p>
-
-            <p className="text-xs text-slate-400">
-              Sales Staff
-            </p>
-          </div>
-
-        </div>
-
-        {/* Logout */}
         <button
           onClick={onLogout}
-          className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-400 hover:bg-red-500/10 transition"
+          className="
+            flex
+            w-full
+            items-center
+            gap-3
+            rounded-xl
+            px-4
+            py-3
+            text-red-500
+            transition
+            hover:bg-red-50
+            dark:hover:bg-red-500/10
+          "
         >
-          <FaSignOutAlt />
 
-          <span>
-            Logout
-          </span>
+          <LogOut size={20} />
+
+          Logout
+
         </button>
 
       </div>
 
     </aside>
   );
-}
+};
 
 export default CashierSidebar;

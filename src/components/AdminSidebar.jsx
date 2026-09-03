@@ -1,139 +1,196 @@
+import React from "react";
+
 import {
-  FaChartPie,
-  FaBox,
-  FaShoppingCart,
-  FaUsers,
-  FaChartBar,
-  FaCog,
-  FaSignOutAlt,
-  FaStore,
-} from "react-icons/fa";
+  LayoutDashboard,
+  Package,
+  Users,
+  BarChart3,
+  Settings,
+  LogOut,
+} from "lucide-react";
 
-function AdminSidebar({ onLogout }) {
-
-  const menu = [
-    {
-      name: "Dashboard",
-      icon: <FaChartPie />,
-    },
-    {
-      name: "Products",
-      icon: <FaBox />,
-    },
-    {
-      name: "Orders",
-      icon: <FaShoppingCart />,
-    },
-    {
-      name: "Customers",
-      icon: <FaUsers />,
-    },
-    {
-      name: "Reports",
-      icon: <FaChartBar />,
-    },
-  ];
+const AdminSidebar = ({ onLogout }) => {
 
   return (
-    <aside className="w-64 min-h-screen bg-slate-900 text-white flex flex-col">
+    <aside
+      className="
+        flex
+        h-screen
+        w-64
+        flex-col
+        border-r
+        border-slate-200
+        bg-white/80
+        backdrop-blur-xl
+        dark:border-slate-700
+        dark:bg-slate-900/80
+      "
+    >
 
-      {/* Logo */}
-      <div className="p-6 border-b border-slate-700">
+      {/* LOGO */}
 
-        <div className="flex items-center gap-3">
+      <div
+        className="
+          border-b
+          border-slate-200
+          p-6
+          dark:border-slate-700
+        "
+      >
 
-          <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
-            <FaStore />
-          </div>
+        <h1 className="text-2xl font-bold text-blue-500">
+          RPR POS
+        </h1>
 
-          <div>
-            <h1 className="font-bold text-lg">
-              FreshPOS
-            </h1>
-
-            <p className="text-xs text-slate-400">
-              Admin Panel
-            </p>
-          </div>
-
-        </div>
+        <p className="mt-1 text-sm text-slate-500">
+          Admin Panel
+        </p>
 
       </div>
 
-      {/* Menu */}
-      <nav className="flex-1 p-4">
 
-        <p className="text-xs text-slate-500 uppercase font-semibold px-3 mb-3">
-          Main Menu
-        </p>
+      {/* MENU */}
 
-        <div className="space-y-2">
+      <nav className="flex-1 space-y-2 p-4">
 
-          {menu.map((item, index) => (
-            <button
-              key={index}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition
-                ${
-                  index === 0
-                    ? "bg-blue-600 text-white"
-                    : "text-slate-400 hover:bg-slate-800 hover:text-white"
-                }
-              `}
-            >
-              <span>{item.icon}</span>
+        <button
+          className="
+            flex
+            w-full
+            items-center
+            gap-3
+            rounded-xl
+            bg-blue-500
+            px-4
+            py-3
+            text-white
+          "
+        >
+          <LayoutDashboard size={20} />
+          Dashboard
+        </button>
 
-              <span className="font-medium">
-                {item.name}
-              </span>
-            </button>
-          ))}
 
-        </div>
+        <button
+          className="
+            flex
+            w-full
+            items-center
+            gap-3
+            rounded-xl
+            px-4
+            py-3
+            text-slate-600
+            hover:bg-blue-50
+            dark:text-slate-300
+            dark:hover:bg-slate-800
+          "
+        >
+          <Package size={20} />
+          Products
+        </button>
 
-        <p className="text-xs text-slate-500 uppercase font-semibold px-3 mt-8 mb-3">
-          System
-        </p>
 
-        <button className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white">
-          <FaCog />
+        <button
+          className="
+            flex
+            w-full
+            items-center
+            gap-3
+            rounded-xl
+            px-4
+            py-3
+            text-slate-600
+            hover:bg-blue-50
+            dark:text-slate-300
+            dark:hover:bg-slate-800
+          "
+        >
+          <Users size={20} />
+          Users
+        </button>
+
+
+        <button
+          className="
+            flex
+            w-full
+            items-center
+            gap-3
+            rounded-xl
+            px-4
+            py-3
+            text-slate-600
+            hover:bg-blue-50
+            dark:text-slate-300
+            dark:hover:bg-slate-800
+          "
+        >
+          <BarChart3 size={20} />
+          Reports
+        </button>
+
+
+        <button
+          className="
+            flex
+            w-full
+            items-center
+            gap-3
+            rounded-xl
+            px-4
+            py-3
+            text-slate-600
+            hover:bg-blue-50
+            dark:text-slate-300
+            dark:hover:bg-slate-800
+          "
+        >
+          <Settings size={20} />
           Settings
         </button>
 
       </nav>
 
-      {/* User */}
-      <div className="p-4 border-t border-slate-700">
 
-        <div className="flex items-center gap-3 mb-4">
+      {/* LOGOUT */}
 
-          <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-            R
-          </div>
-
-          <div>
-            <p className="font-semibold">
-              Reach
-            </p>
-
-            <p className="text-xs text-slate-400">
-              Administrator
-            </p>
-          </div>
-
-        </div>
+      <div
+        className="
+          border-t
+          border-slate-200
+          p-4
+          dark:border-slate-700
+        "
+      >
 
         <button
           onClick={onLogout}
-          className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-400 hover:bg-red-500/10"
+          className="
+            flex
+            w-full
+            items-center
+            gap-3
+            rounded-xl
+            px-4
+            py-3
+            text-red-500
+            transition
+            hover:bg-red-50
+            dark:hover:bg-red-500/10
+          "
         >
-          <FaSignOutAlt />
+
+          <LogOut size={20} />
+
           Logout
+
         </button>
 
       </div>
 
     </aside>
   );
-}
+};
 
 export default AdminSidebar;
